@@ -1,0 +1,38 @@
+{% extends "basetemplate.html" %}
+
+{% block title %}
+Personer
+{% endblock %}
+
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h1>Alla personer</h1>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>Namn</th>
+                <th>Postnummer</th>
+                <th>Stad</th>
+                <th></th>
+            </tr>
+            {% for person in Items %}      
+                <tr>
+                    <td>{{ person.namn }}</td>
+                    <td>{{ person.postalcode }}</td>
+                    <td>{{ person.city }}</td>
+                    <td>
+                        <a href="{{ url_for('personer.personEdit',id=person.id)  }}"><i class='bx bx-edit'></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+            <a class="btn" href="{{ url_for('personer.personNew')  }}">Create new</a>
+
+    </div>
+</div>
+{% endblock %}
+
